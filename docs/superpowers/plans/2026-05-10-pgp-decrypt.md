@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build a localhost-only React web app at `http://localhost:6666` that encrypts and decrypts PGP messages with labeled-key storage in localStorage.
+**Goal:** Build a localhost-only React web app at `http://localhost:5173` that encrypts and decrypts PGP messages with labeled-key storage in localStorage.
 
 **Architecture:** Single-page Vite app, two split panes (Decrypt left, Encrypt right). All PGP via openpgp.js v6, encapsulated in `pgp.ts`. All persistence via a single localStorage key, encapsulated in `keystore.ts`. A small React hook layer (`useKeystore`, `useToast`) connects pure modules to components. No router, no state library, no tests.
 
@@ -22,7 +22,7 @@
 |------|---------|------|
 | `package.json` | dependencies, scripts | 1 |
 | `tsconfig.json` | TS strict, react-jsx | 1 |
-| `vite.config.ts` | dev server on port 6666 | 1 |
+| `vite.config.ts` | dev server on port 5173 | 1 |
 | `index.html` | Vite entry | 1 |
 | `src/main.tsx` | React root | 1 |
 | `src/theme.css` | dark tokens, layout, all component styles | 1 |
@@ -41,7 +41,7 @@
 
 ---
 
-## Task 1: Scaffold Vite + React + TS project on port 6666
+## Task 1: Scaffold Vite + React + TS project on port 5173
 
 **Files:**
 - Create: `package.json`
@@ -136,7 +136,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: 'localhost',
-    port: 6666,
+    port: 5173,
     strictPort: true,
   },
 });
@@ -454,18 +454,18 @@ button, input, textarea, select {
 Run: `npm install`
 Expected: completes without errors. `node_modules/` is created and `package-lock.json` is written.
 
-- [ ] **Step 10: Verify dev server starts on port 6666**
+- [ ] **Step 10: Verify dev server starts on port 5173**
 
 Run: `npm run dev`
 Expected output (similar):
 ```
   VITE v5.x.x  ready in NNN ms
-  ➜  Local:   http://localhost:6666/
+  ➜  Local:   http://localhost:5173/
 ```
 
-Open `http://localhost:6666` in a browser. Expected: dark background, monospace "scaffolding ok" text. Stop the server with `Ctrl+C`.
+Open `http://localhost:5173` in a browser. Expected: dark background, monospace "scaffolding ok" text. Stop the server with `Ctrl+C`.
 
-If port 6666 is in use, the run will fail (due to `strictPort: true`). Free the port and re-run — do not change the port.
+If port 5173 is in use, the run will fail (due to `strictPort: true`). Free the port and re-run. Note: port was changed from 6666 (Chrome/Tor unsafe-port blocklist, IRC range 6660–6669) to 5173 (Vite default, universally allowed).
 
 - [ ] **Step 11: Verify type-check passes**
 
@@ -476,7 +476,7 @@ Expected: no output, exit code 0.
 
 ```bash
 git add package.json package-lock.json tsconfig.json tsconfig.node.json vite.config.ts index.html src/main.tsx src/App.tsx src/theme.css
-git commit -m "feat: scaffold Vite + React 19 + TS project on port 6666"
+git commit -m "feat: scaffold Vite + React 19 + TS project on port 5173"
 ```
 
 ---
@@ -1621,7 +1621,7 @@ No tests are written; instead, run through this checklist in the browser. Use an
 - [ ] **Step 1: Start the dev server**
 
 Run: `npm run dev`
-Expected: server starts on `http://localhost:6666`. Open it in Chrome.
+Expected: server starts on `http://localhost:5173`. Open it in Chrome.
 
 - [ ] **Step 2: Verify layout**
 
@@ -1675,7 +1675,7 @@ Expected: server starts on `http://localhost:6666`. Open it in Chrome.
 
 - [ ] **Step 8: Tor Browser sanity check (optional but recommended)**
 
-Open `http://localhost:6666` in Tor Browser at default security level. Verify: app loads, encrypt/decrypt round-trip works, Copy button copies (the user gesture satisfies clipboard permission).
+Open `http://localhost:5173` in Tor Browser at default security level. Verify: app loads, encrypt/decrypt round-trip works, Copy button copies (the user gesture satisfies clipboard permission).
 
 - [ ] **Step 9: No commit needed**
 
@@ -1685,7 +1685,7 @@ This task only verifies behavior; nothing changed in the repo.
 
 ## Done criteria
 
-- `npm run dev` serves the app on `http://localhost:6666`.
+- `npm run dev` serves the app on `http://localhost:5173`.
 - `npm run typecheck` is clean.
 - All Task 13 checklist items pass in Chrome.
 - All commits made; `git status` is clean.

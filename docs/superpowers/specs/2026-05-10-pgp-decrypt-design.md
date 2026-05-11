@@ -5,7 +5,9 @@
 
 ## Goal
 
-A local web application served on `http://localhost:6666` that encrypts and decrypts PGP messages. Personal tool, single user, localhost only. Supports Chrome and Tor Browser.
+A local web application served on `http://localhost:5173` that encrypts and decrypts PGP messages. Personal tool, single user, localhost only. Supports Chrome and Tor Browser.
+
+(Originally specced for port 6666, but Chrome and Tor Browser block that port via their hard-coded unsafe-port list — the entire IRC range 6660–6669. 5173 is Vite's default dev port and is universally allowed.)
 
 ## Tech stack
 
@@ -239,11 +241,11 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  server: { host: 'localhost', port: 6666, strictPort: true },
+  server: { host: 'localhost', port: 5173, strictPort: true },
 });
 ```
 
-`npm run dev` serves http://localhost:6666. `strictPort: true` means startup fails if 6666 is taken rather than silently falling back. No HTTPS — localhost personal tool only.
+`npm run dev` serves http://localhost:5173. `strictPort: true` means startup fails if 5173 is taken rather than silently falling back. No HTTPS — localhost personal tool only.
 
 ## Browser support
 
