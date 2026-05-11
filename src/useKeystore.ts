@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import * as keystore from './keystore';
+import { STORAGE_KEY } from './keystore';
 import type { KeyType, KeystoreState, SavedKey } from './types';
-
-const STORAGE_KEY = 'pgp-decrypt:keystore:v1';
 
 export function useKeystore() {
   const [state, setState] = useState<KeystoreState>(() => keystore.load());

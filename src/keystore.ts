@@ -5,7 +5,7 @@ import {
   type SavedKey,
 } from './types';
 
-const STORAGE_KEY = 'pgp-decrypt:keystore:v1';
+export const STORAGE_KEY = 'pgp-decrypt:keystore:v1';
 
 const emptyState = (): KeystoreState => ({ version: 1, keys: [] });
 
